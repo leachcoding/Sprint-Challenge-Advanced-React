@@ -31,3 +31,18 @@
     transform: rotate(360deg);
   }
 }
+
+
+.dark-mode {
+  background-color: black;
+  color: lightgrey;
+}
+
+.dark-mode button {
+  background-color: grey;
+  color: white;
+}
+
+.App {
+  text-align: center;
+}
