@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import Card from './components/Card';
+import Search from './components/Search';
+import axios from 'axios';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends Component {
 
-export default App;
+  constructor(props) {
+    super();
+
+    this.state = {
+      users: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:5000/api/players')
+      .then((res) => {
+        this.setState({
+          users: res.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  getUser = (searchInput) => {
+    this.setState({ search: searchInput })
+    fetch(`http://localhost:5000/api/players/${searchInput}`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ users: res.data })
+      })
+      .catch(err => console.log(err))
+    }
+
+  render() {
+    return (
+      <div className='App'>
+        <Search getUser={this.getUser} />
+        <Card user={this.state.users} />
+      </div>
+    )
+  }
+}

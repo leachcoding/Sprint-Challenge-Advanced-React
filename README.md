@@ -23,9 +23,44 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit the `ANSWERS.md` file to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Why would you use class component over function components (removing hooks from the question)?
+
+Class components make use of ES6 class and extend the Component class in React.
+Sometimes called “smart” or “stateful” components as they tend to implement logic and state.
+React lifecycle methods can be used inside class components (for example, componentDidMount).
+You pass props down to class components and access them with this.props
+
 - [ ] Name three lifecycle methods and their purposes.
+
+render
+Rendering does all the work. It returns the JSX of your actual component.
+componentDidMount
+If you need to load data, here’s where you do it.
+getDerivedStateFromProps
+If you need to update your state based on a prop changing, you can do it here by returning a new state object.
+
 - [ ] What is the purpose of a custom hook?
+
+Custom Hooks, so-called because you are building the hook yourself, allow you to apply non-visual behavior and stateful logic throughout your components by reusing the same hook over and over again. They follow the same patterns of naming that you’ve already learned (i.e. prefacing the function name with use, as in useState). You can build a reusable custom hook for uses as varied as handling controlled inputs, managing event listeners, and watching for key presses.
+
 - [ ] Why is it important to test our apps?
+
+In terms of benefits, testing:
+
+Surfaces bugs faster.
+Reduces the risk of regressions.
+Allows us to trust the code.
+Makes us think about the edge cases.
+Acts as a safety net when making changes or refactoring.
+Acts as documentation for the code.
+Encourages us to write more testable (better!) code.
+
+On the other hand, NOT testing:
+
+Forces to use very expensive manual testing.
+Causes bugs and edge cases to be encountered later.
+Makes refactoring or adding features risky and scary.
+Can make codebases fragile and expensive to maintain.
+Makes less documented codebases much harder to understand.
 
 ## Project Set Up
 
